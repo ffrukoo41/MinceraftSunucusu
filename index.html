@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Sunucu Durumu</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Minecraft Sunucusu</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>Minecraft Sunucu Durumu</h1>
-  <div id="durum" class="durum">Kontrol ediliyor...</div>
+  <div class="container">
+    <h1 class="title">Gamaz Sunucusu</h1>
+    <button class="play-button" onclick="toggleInfo()">OYNA</button>
 
-  <script src="script.js"></script>
+    <div class="info-box" id="infoBox">
+      <p><strong>IP:</strong> Gamaz179-MCgS.aternos.me</p>
+      <p><strong>Sürüm:</strong> 1.20+</p>
+      <p><strong>Port:</strong> 25565</p>
+    </div>
+
+    <div class="status-box">
+      <p><strong>Sunucu Durumu:</strong> <span id="serverStatus">Yükleniyor...</span></p>
+      <p><strong>Oyuncu Sayısı:</strong> <span id="playerCount">0</span></p>
+      <p><strong>Oyuncular:</strong> <span id="playerList">Yok</span></p>
+    </div>
+  </div>
 </body>
 </html>
