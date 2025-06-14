@@ -51,6 +51,8 @@ nav ul li a:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 1000;
 }
 
 .button:hover {
@@ -58,7 +60,7 @@ nav ul li a:hover {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* IP, Port, Sürüm Bilgi Kutusu */
+/* IP, Port, Sürüm ve Sunucu Bilgi Kutusu */
 .info-box {
   margin-top: 20px;
   background-color: rgba(0, 0, 0, 0.75);
@@ -72,4 +74,10 @@ nav ul li a:hover {
   font-size: 18px;
   line-height: 1.6;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Liste Stili */
+#playerList {
+  padding-left: 20px;
+  margin-top: 5px;
 }
