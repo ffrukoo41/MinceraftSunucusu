@@ -1,4 +1,3 @@
-// Buton ve info kutusu elementleri
 const playBtn = document.getElementById("playBtn");
 const serverInfo = document.getElementById("infoBox");
 
@@ -6,15 +5,18 @@ const serverStatusEl = document.getElementById("serverStatus");
 const playerCountEl = document.getElementById("playerCount");
 const playerListEl = document.getElementById("playerList");
 
-// Sunucu IP adresi (kendi Aternos IP'n ile değiştir)
+// Minecraft sunucu IP adresin
 const SERVER_IP = "Gamaz179-MCgS.aternos.me";
 
-// Oyna butonuna tıklayınca bilgi kutusunu aç/kapa yap
 playBtn.addEventListener("click", () => {
-  serverInfo.classList.toggle("hidden");
+  // Aç kapa için display stilini değiştir
+  if (serverInfo.style.display === "block") {
+    serverInfo.style.display = "none";
+  } else {
+    serverInfo.style.display = "block";
+  }
 });
 
-// Minecraft sunucu durumunu çeken API (mcsrvstat.us)
 async function fetchServerStatus() {
   try {
     const response = await fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`);
@@ -40,3 +42,18 @@ async function fetchServerStatus() {
     } else {
       serverStatusEl.textContent = "Kapalı";
       playerCountEl.textContent = "0";
+      playerListEl.innerHTML = "<li>Sunucu kapalı</li>";
+    }
+  } catch (error) {
+    serverStatusEl.textContent = "Hata!";
+    playerCountEl.textContent = "-";
+    playerListEl.innerHTML = "<li>Sunucu bilgisi alınamadı</li>";
+    console.error(error);
+  }
+}
+
+// Sayfa yüklendiğinde durum bilgisini hemen getir
+fetchServerStatus();
+
+// 30 saniyede bir güncelle
+setInterval(fetchServerStatus, 30000);
