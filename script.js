@@ -1,4 +1,4 @@
-const serverIp = "sunucu_adın.aternos.me"; // örnek: ffrukoo41.aternos.me
+const serverIp = "Gamaz179-MCgS.aternos.me"; // örnek: ffrukoo41.aternos.me
 
 fetch(`https://api.mcsrvstat.us/2/${serverIp}`)
   .then(response => response.json())
