@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minecraft Sunucu - Ana Sayfa</title>
+  <title>Minecraft Sunucusu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="background"></div>
-
-  <main>
-    <button id="playButton">OYNA</button>
-
-    <div id="serverInfo" class="hidden">
-      <p><strong>Sunucu IP:</strong> <span id="ip">mc.gamaz179.com</span></p>
-      <p><strong>Sürüm:</strong> <span id="version">1.20.2</span></p>
-      <p><strong>Port:</strong> <span id="port">25565</span></p>
-      <p><strong>Sunucu Durumu:</strong> <span id="status">Bilinmiyor</span></p>
-      <p><strong>Oyuncu Sayısı:</strong> <span id="players">0</span></p>
-      <p><strong>Oyuncular:</strong> <span id="playerList">Yok</span></p>
+  <div class="container">
+    <div class="background-overlay"></div>
+    <div class="content">
+      <h1>Minecraft Sunucumuza Hoşgeldiniz</h1>
+      <button id="playBtn">OYNA</button>
+      <div id="serverInfo" class="hidden">
+        <p><strong>IP:</strong> play.yoursite.com</p>
+        <p><strong>Port:</strong> 25565</p>
+        <p><strong>Sürüm:</strong> 1.20.1</p>
+      </div>
+      <div id="status">
+        <p><strong>Sunucu Durumu:</strong> <span id="serverStatus">Yükleniyor...</span></p>
+        <p><strong>Aktif Oyuncu Sayısı:</strong> <span id="playerCount">0</span></p>
+        <p><strong>Oyuncular:</strong></p>
+        <ul id="playerList"></ul>
+      </div>
     </div>
-  </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
