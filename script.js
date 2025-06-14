@@ -2,15 +2,15 @@ fetch("https://api.mcstatus.io/v2/status/java/Gamaz179-MCgS.aternos.me")
   .then(res => res.json())
   .then(data => {
     const el = document.getElementById("sunucuDurumu");
-    if (!data.online) {
-      el.innerHTML = "🔴 Sunucu Kapalı";
-    } else if (data.players.online === 0) {
-      el.innerHTML = "🔴 Sunucu Kapalı (oyuncu yok)";
+
+    if (!data.online || !data.players || data.players.online === 0) {
+      el.innerHTML = "🔴 Sunucu Kapalı (veya Oyuncu Yok)";
     } else {
-      const list = data.players.list?.join(", ") || "Bilgi yok";
-      el.innerHTML = `🔵 Sunucu Açık<br>Oyuncu: ${data.players.online}<br>İsimler: ${list}`;
+      const isimler = data.players.list?.join(", ") || "Oyuncu listesi alınamadı";
+      el.innerHTML = `🟢 Sunucu Açık<br>Oyuncu Sayısı: ${data.players.online}<br>Oyuncular: ${isimler}`;
     }
   })
-  .catch(() => {
-    document.getElementById("sunucuDurumu").innerText = "⚠️ Durum alınamadı.";
+  .catch((error) => {
+    document.getElementById("sunucuDurumu").innerHTML = "⚠️ Bilgi alınamadı. Bağlantı sorunu.";
+    console.error("Hata:", error);
   });
