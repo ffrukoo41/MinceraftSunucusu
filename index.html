@@ -1,51 +1,16 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Minecraft Sunucu - 3D Buton</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet" />
-<style>
-  /* Tam ekran, arka plan Minecraft temalı */
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    background: url('https://cdn.pixabay.com/photo/2017/02/01/10/27/minecraft-2026442_1280.jpg') center center/cover no-repeat;
-    font-family: 'Roboto', sans-serif;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-  }
-
-  /* Butonun 3D yeşil stili */
-  #playBtn {
-    background: linear-gradient(145deg, #00ff00, #008000);
-    border: none;
-    padding: 25px 80px;
-    font-size: 3rem;
-    font-weight: 700;
-    color: black;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow:
-      0 8px #004d00,
-      0 0 20px #00ff00,
-      inset 0 -4px 10px #00cc00;
-    transition: all 0.3s ease;
-    user-select: none;
-  }
-
-  #playBtn:hover {
-    background: linear-gradient(145deg, #00cc00, #006600);
-    box-shadow:
-      0 10px #003300,
-      0 0 30px #00ff00,
-      inset 0 -6px 12px #00ff00;
-    color: white;
-    transform: translateY(-2px);
-  }
-
-  #playBtn:active {
-    box-shadow:
-      0 3px #002200,
-      inset 0 2px 5px #009900;
-    transform: translate
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Tarzı Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Minecraft Dünyasına Hoş Geldin!</h1>
+        <p>Keşfet, İnşa Et, Hayatta Kal!</p>
+        <button onclick="alert('Oyuna Katıl!')">Oyunu Oyna</button>
+    </header>
+</body>
+</html>
