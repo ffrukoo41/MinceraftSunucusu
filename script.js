@@ -1,20 +1,20 @@
-fetch("https://api.mcstatus.io/v2/status/java/Gamaz179-MCgS.aternos.me")
-  .then(response => response.json())
+function toggleInfo() {
+  const box = document.getElementById("infoBox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+
+fetch("https://api.mcsrvstat.us/2/Gamaz179-MCgS.aternos.me")
+  .then(res => res.json())
   .then(data => {
-    const durum = document.getElementById("durum");
-    
-    if (!data.online || data.players.online === 0) {
-      durum.innerHTML = "🔴 Sunucu Kapalı veya Oyuncu Yok";
-      durum.classList.add("kapali");
-    } else {
-      const oyuncular = data.players.list?.join(", ") || "Bilinmiyor";
-      durum.innerHTML = `🟢 Sunucu Açık<br>Oyuncu Sayısı: ${data.players.online}<br>Oyuncular: ${oyuncular}`;
-      durum.classList.add("acik");
+    const status = data.online ? "Açık ✅" : "Kapalı ❌";
+    document.getElementById("serverStatus").textContent = status;
+
+    if (data.online) {
+      document.getElementById("playerCount").textContent = data.players.online;
+      const playerList = data.players.list ? data.players.list.join(", ") : "Kimse yok";
+      document.getElementById("playerList").textContent = playerList;
     }
   })
-  .catch(error => {
-    console.error("Hata:", error);
-    const durum = document.getElementById("durum");
-    durum.innerHTML = "⚠️ Sunucuya erişilemedi.";
-    durum.classList.add("hata");
+  .catch(err => {
+    document.getElementById("serverStatus").textContent = "Hata";
   });
