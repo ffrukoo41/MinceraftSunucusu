@@ -2,12 +2,13 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aternos Sunucu</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
+
   <header>
     <nav>
       <ul>
@@ -22,13 +23,18 @@
   <main class="hero">
     <h1>Aternos Sunucu</h1>
     <p>Minecraft dünyasına katılın ve eğlenin!</p>
-    <button class="button" onclick="toggleInfo()">OYNA</button>
+    <button id="playBtn">OYNA</button>
 
-    <div class="info-box" id="infoBox">
+    <div class="info-box hidden" id="infoBox">
       <p><strong>IP:</strong> Gamaz179-MCgS.aternos.me</p>
       <p><strong>Sürüm:</strong> 1.20+</p>
       <p><strong>Port:</strong> 25565</p>
+      <p><strong>Sunucu Durumu:</strong> <span id="serverStatus">Yükleniyor...</span></p>
+      <p><strong>Oyuncu Sayısı:</strong> <span id="playerCount">0</span></p>
+      <p><strong>Aktif Oyuncular:</strong></p>
+      <ul id="playerList"><li>Yükleniyor...</li></ul>
     </div>
   </main>
+
 </body>
 </html>
