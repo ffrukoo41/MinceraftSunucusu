@@ -1,24 +1,27 @@
 const playBtn = document.getElementById("playBtn");
-const serverInfo = document.getElementById("infoBox");
+const infoBox = document.getElementById("infoBox");
 
 const serverStatusEl = document.getElementById("serverStatus");
 const playerCountEl = document.getElementById("playerCount");
 const playerListEl = document.getElementById("playerList");
 
-// Minecraft sunucu IP adresin
-const SERVER_IP = "Gamaz179-MCgS.aternos.me";
+// Minecraft sunucu bilgileri
+const SERVER_IP = "Gamaz179-MCgS.aternos.me";  // senin IP'ni yazdım
+//const SERVER_PORT = "25565"; // port gerekirse kullanılabilir
 
+// OYNA butonuna tıklandığında bilgi kutusunu aç/kapat yapar
 playBtn.addEventListener("click", () => {
-  // Aç kapa için display stilini değiştir
-  if (serverInfo.style.display === "block") {
-    serverInfo.style.display = "none";
+  if (infoBox.style.display === "none" || infoBox.style.display === "") {
+    infoBox.style.display = "block";
   } else {
-    serverInfo.style.display = "block";
+    infoBox.style.display = "none";
   }
 });
 
+// Sunucu durumunu ve oyuncuları çekmek için API çağrısı
 async function fetchServerStatus() {
   try {
+    // Aternos için standart API olmadığından, örnek olarak mcsrvstat.us kullanıyoruz
     const response = await fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`);
     if (!response.ok) throw new Error("API isteği başarısız");
 
@@ -28,8 +31,8 @@ async function fetchServerStatus() {
       serverStatusEl.textContent = "Açık";
       playerCountEl.textContent = data.players.online || 0;
 
+      // Oyuncu listesi varsa göster
       playerListEl.innerHTML = "";
-
       if (data.players.list && data.players.list.length > 0) {
         data.players.list.forEach(player => {
           const li = document.createElement("li");
@@ -52,7 +55,7 @@ async function fetchServerStatus() {
   }
 }
 
-// Sayfa yüklendiğinde durum bilgisini hemen getir
+// Sayfa yüklendiğinde durumu hemen çek
 fetchServerStatus();
 
 // 30 saniyede bir güncelle
