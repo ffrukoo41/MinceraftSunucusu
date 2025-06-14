@@ -5,9 +5,8 @@ const serverStatusEl = document.getElementById("serverStatus");
 const playerCountEl = document.getElementById("playerCount");
 const playerListEl = document.getElementById("playerList");
 
-// Minecraft sunucu bilgileri
-const SERVER_IP = "OyunNetwork.aternos.me";  // senin IP'ni yazdım
-//const SERVER_PORT = "18968"; // port gerekirse kullanılabilir
+// Minecraft sunucu IP adresi
+const SERVER_IP = "OyunNetwork.aternos.me";
 
 // OYNA butonuna tıklandığında bilgi kutusunu aç/kapat yapar
 playBtn.addEventListener("click", () => {
@@ -21,7 +20,6 @@ playBtn.addEventListener("click", () => {
 // Sunucu durumunu ve oyuncuları çekmek için API çağrısı
 async function fetchServerStatus() {
   try {
-    // Aternos için standart API olmadığından, örnek olarak mcsrvstat.us kullanıyoruz
     const response = await fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`);
     if (!response.ok) throw new Error("API isteği başarısız");
 
