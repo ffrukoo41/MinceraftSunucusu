@@ -1,8 +1,3 @@
-function toggleInfo() {
-  const box = document.getElementById("infoBox");
-  box.style.display = box.style.display === "none" ? "block" : "none";
-}
-
 fetch("https://api.mcsrvstat.us/2/Gamaz179-MCgS.aternos.me")
   .then(res => res.json())
   .then(data => {
