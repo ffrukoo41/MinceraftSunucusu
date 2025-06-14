@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aternos Sunucu</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="#">Sunucu</a></li>
-        <li><a href="#">Oyuncular</a></li>
-        <li><a href="#">Hakkımızda</a></li>
-        <li><a href="#">İletişim</a></li>
+        <li><a href="#sunucu">Sunucu</a></li>
+        <li><a href="#oyuncular">Oyuncular</a></li>
+        <li><a href="#hakkimizda">Hakkımızda</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
       </ul>
     </nav>
   </header>
@@ -21,7 +22,13 @@
   <main class="hero">
     <h1>Aternos Sunucu</h1>
     <p>Minecraft dünyasına katılın ve eğlenin!</p>
-    <a href="#" class="button">OYNA</a>
+    <button class="button" onclick="toggleInfo()">OYNA</button>
+
+    <div class="info-box" id="infoBox">
+      <p><strong>IP:</strong> Gamaz179-MCgS.aternos.me</p>
+      <p><strong>Sürüm:</strong> 1.20+</p>
+      <p><strong>Port:</strong> 25565</p>
+    </div>
   </main>
 </body>
 </html>
