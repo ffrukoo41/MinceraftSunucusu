@@ -5,93 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aternos Sunucu</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Basit stil ayarları */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(#111, #000);
-      color: #fff;
-    }
-    header nav ul {
-      display: flex;
-      list-style: none;
-      padding: 20px;
-      margin: 0;
-      justify-content: center;
-      gap: 40px;
-      background-color: rgba(0, 0, 0, 0.6);
-    }
-    header nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      text-align: center;
-      margin-top: 150px;
-    }
-    .hero h1 { font-size: 48px; }
-    .hero p { font-size: 20px; margin: 15px 0; }
-    .button {
-      display: inline-block;
-      padding: 12px 30px;
-      background: #4CAF50;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .button:hover { background: #45a049; }
-    /* Link formu stilleri */
-    #linkGiris {
-      background: #222;
-      padding: 20px;
-      margin: 40px auto;
-      width: 90%;
-      max-width: 600px;
-      border-radius: 10px;
-    }
-    #linkGiris h2 { text-align: center; }
-    #linkGiris form > div {
-      margin-bottom: 15px;
-    }
-    #linkGiris label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    #linkGiris input[type="url"] {
-      width: 100%;
-      padding: 8px;
-      border-radius: 4px;
-      border: none;
-    }
-    #linkGiris button {
-      display: block;
-      margin: 0 auto;
-      padding: 10px 20px;
-      background: #4CAF50;
-      border: none;
-      border-radius: 5px;
-      color: #fff;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    #linkGiris button:hover {
-      background: #45a049;
-    }
-  </style>
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a id="btnSunucu" href="#">Sunucu</a></li>
-        <li><a id="btnOyuncular" href="#">Oyuncular</a></li>
-        <li><a id="btnHakkimizda" href="#">Hakkımızda</a></li>
-        <li><a id="btnIletisim" href="#">İletişim</a></li>
+        <li><a href="#">Sunucu</a></li>
+        <li><a href="#">Oyuncular</a></li>
+        <li><a href="#">Hakkımızda</a></li>
+        <li><a href="#">İletişim</a></li>
       </ul>
     </nav>
   </header>
@@ -99,59 +21,7 @@
   <main class="hero">
     <h1>Aternos Sunucu</h1>
     <p>Minecraft dünyasına katılın ve eğlenin!</p>
-    <a id="btnOyna" href="#" class="button">OYNA</a>
+    <a href="#" class="button">OYNA</a>
   </main>
-
-  <!-- Link ayarlama formu -->
-  <section id="linkGiris">
-    <h2>Link Ayarları</h2>
-    <form id="linkForm">
-      <div>
-        <label for="linkSunucu">Sunucu Link:</label>
-        <input type="url" id="linkSunucu" placeholder="https://ornek-sunucu.com" required>
-      </div>
-      <div>
-        <label for="linkOyuncular">Oyuncular Link:</label>
-        <input type="url" id="linkOyuncular" placeholder="https://ornek-oyuncular.com" required>
-      </div>
-      <div>
-        <label for="linkHakkimizda">Hakkımızda Link:</label>
-        <input type="url" id="linkHakkimizda" placeholder="https://ornek-hakkimizda.com" required>
-      </div>
-      <div>
-        <label for="linkIletisim">İletişim Link:</label>
-        <input type="url" id="linkIletisim" placeholder="https://ornek-iletisim.com" required>
-      </div>
-      <div>
-        <label for="linkOyna">OYNA Buton Link:</label>
-        <input type="url" id="linkOyna" placeholder="https://ornek-oyna.com" required>
-      </div>
-      <button type="submit">Linkleri Ayarla</button>
-    </form>
-  </section>
-
-  <script>
-    // Form gönderildiğinde her bir butonun href'sini ayarla
-    const linkForm = document.getElementById("linkForm");
-    linkForm.addEventListener("submit", function(e) {
-      e.preventDefault();
-      
-      // Link inputlarından değerleri al
-      const sunucuLink = document.getElementById("linkSunucu").value;
-      const oyuncularLink = document.getElementById("linkOyuncular").value;
-      const hakkimizdaLink = document.getElementById("linkHakkimizda").value;
-      const iletisimLink = document.getElementById("linkIletisim").value;
-      const oynaLink = document.getElementById("linkOyna").value;
-      
-      // İlgili butonlara linkleri ekle
-      document.getElementById("btnSunucu").href = sunucuLink;
-      document.getElementById("btnOyuncular").href = oyuncularLink;
-      document.getElementById("btnHakkimizda").href = hakkimizdaLink;
-      document.getElementById("btnIletisim").href = iletisimLink;
-      document.getElementById("btnOyna").href = oynaLink;
-      
-      alert("Linkler başarıyla ayarlandı!");
-    });
-  </script>
 </body>
 </html>
