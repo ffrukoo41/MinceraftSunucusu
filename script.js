@@ -6,8 +6,8 @@ const playerCountEl = document.getElementById("playerCount");
 const playerListEl = document.getElementById("playerList");
 
 // Minecraft sunucu bilgileri
-const SERVER_IP = "Gamaz179-MCgS.aternos.me";  // senin IP'ni yazdım
-//const SERVER_PORT = "25565"; // port gerekirse kullanılabilir
+const SERVER_IP = "OyunNetwork.aternos.me";  // senin IP'ni yazdım
+//const SERVER_PORT = "18968"; // port gerekirse kullanılabilir
 
 // OYNA butonuna tıklandığında bilgi kutusunu aç/kapat yapar
 playBtn.addEventListener("click", () => {
