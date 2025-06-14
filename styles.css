@@ -46,3 +46,8 @@ body {
 .info-box {
   display: none;
 }
+
+function toggleInfo() {
+  const box = document.getElementById("infoBox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
