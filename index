@@ -1,0 +1,6 @@
+<div>
+  <h2 id="status">Sunucu Durumu Yükleniyor...</h2>
+  <p id="players"></p>
+  <ul id="playerList"></ul>
+</div>
+<script src="script.js"></script>
