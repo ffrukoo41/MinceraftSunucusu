@@ -5,22 +5,19 @@ const serverStatusEl = document.getElementById("serverStatus");
 const playerCountEl = document.getElementById("playerCount");
 const playerListEl = document.getElementById("playerList");
 
-// Minecraft sunucu IP adresi
+// Minecraft sunucu bilgileri
 const SERVER_IP = "OyunNetwork.aternos.me";
+const SERVER_PORT = "18968";
 
 // OYNA butonuna tıklandığında bilgi kutusunu aç/kapat yapar
 playBtn.addEventListener("click", () => {
-  if (infoBox.style.display === "none" || infoBox.style.display === "") {
-    infoBox.style.display = "block";
-  } else {
-    infoBox.style.display = "none";
-  }
+  infoBox.style.display = (infoBox.style.display === "block") ? "none" : "block";
 });
 
 // Sunucu durumunu ve oyuncuları çekmek için API çağrısı
 async function fetchServerStatus() {
   try {
-    const response = await fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`);
+    const response = await fetch(`https://api.minetools.eu/ping/${SERVER_IP}/${SERVER_PORT}`);
     if (!response.ok) throw new Error("API isteği başarısız");
 
     const data = await response.json();
@@ -29,12 +26,12 @@ async function fetchServerStatus() {
       serverStatusEl.textContent = "Açık";
       playerCountEl.textContent = data.players.online || 0;
 
-      // Oyuncu listesi varsa göster
+      // Oyuncu listesi varsa göster (minetools API bazen oyuncu isimlerini vermez)
       playerListEl.innerHTML = "";
-      if (data.players.list && data.players.list.length > 0) {
-        data.players.list.forEach(player => {
+      if (data.players.sample && data.players.sample.length > 0) {
+        data.players.sample.forEach(player => {
           const li = document.createElement("li");
-          li.textContent = player;
+          li.textContent = player.name;
           playerListEl.appendChild(li);
         });
       } else {
