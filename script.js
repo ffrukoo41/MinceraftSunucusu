@@ -1,28 +1,19 @@
-const serverIp = "Gamaz179-MCgS.aternos.me"; // örnek: ffrukoo41.aternos.me
-
-fetch(`https://api.mcsrvstat.us/2/${serverIp}`)
-  .then(response => response.json())
+fetch("https://api.mcstatus.io/v2/status/java/Gamaz179-MCgS.aternos.me")
+  .then(res => res.json())
   .then(data => {
-    const statusEl = document.getElementById("status");
-    const playersEl = document.getElementById("players");
-    const playerListEl = document.getElementById("playerList");
-
+    const durumDiv = document.getElementById("sunucuDurumu");
     if (data.online) {
-      statusEl.textContent = "🟢 Sunucu Açık";
-      playersEl.textContent = `👥 Oyuncu Sayısı: ${data.players.online} / ${data.players.max}`;
-
-      // Oyuncu isimlerini listele
-      if (data.players.list) {
-        playerListEl.innerHTML = data.players.list.map(p => `<li>${p}</li>`).join("");
-      } else {
-        playerListEl.innerHTML = "<li>Kimse yok 😴</li>";
-      }
+      const oyuncular = data.players.list?.join(", ") || "Oyuncu yok.";
+      durumDiv.innerHTML = `
+        <strong>🟢 Sunucu Açık</strong><br>
+        👥 Oyuncu Sayısı: ${data.players.online}<br>
+        🎮 Oyundakiler: ${oyuncular}
+      `;
     } else {
-      statusEl.textContent = "🔴 Sunucu Kapalı";
-      playersEl.textContent = "👥 Oyuncu Sayısı: 0";
-      playerListEl.innerHTML = "<li>Sunucu kapalı</li>";
+      durumDiv.innerHTML = "<strong>🔴 Sunucu Kapalı</strong>";
     }
   })
   .catch(err => {
-    console.error(err);
+    document.getElementById("sunucuDurumu").innerText = "⚠️ Durum alınamadı. Bağlantı hatası.";
+    console.error("Sunucu durumu alınamadı:", err);
   });
