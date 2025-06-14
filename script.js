@@ -1,45 +1,62 @@
-const playButton = document.getElementById('playButton');
-const serverInfo = document.getElementById('serverInfo');
-const statusSpan = document.getElementById('status');
-const playersSpan = document.getElementById('players');
-const playerListSpan = document.getElementById('playerList');
+const playBtn = document.getElementById("playBtn");
+const serverInfo = document.getElementById("serverInfo");
 
-// Minecraft sunucu API (örnek)
-// Bu API'yi kendi sunucuna göre değiştirebilirsin veya Aternos vb. kullanıyorsan API'yi ona göre.
-// Örnek public API: https://api.mcsrvstat.us/2/mc.gamaz179.com
+const serverStatusEl = document.getElementById("serverStatus");
+const playerCountEl = document.getElementById("playerCount");
+const playerListEl = document.getElementById("playerList");
 
+// Minecraft sunucu bilgileri (örnek)
+const SERVER_IP = "play.yoursite.com";
+const SERVER_PORT = "25565";
+const SERVER_VERSION = "1.20.1";
+
+// Oyna butonuna tıklayınca sunucu bilgilerini göster
+playBtn.addEventListener("click", () => {
+  if (serverInfo.classList.contains("hidden")) {
+    serverInfo.classList.remove("hidden");
+  } else {
+    serverInfo.classList.add("hidden");
+  }
+});
+
+// Sunucu durumunu ve oyuncuları çekmek için API çağrısı (örnek Aternos veya başka API kullanabilirsin)
 async function fetchServerStatus() {
   try {
-    const response = await fetch('https://api.mcsrvstat.us/2/mc.gamaz179.com');
+    // Örnek API: https://api.mcsrvstat.us/2/play.yoursite.com
+    const response = await fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`);
+    if (!response.ok) throw new Error("API isteği başarısız");
+
     const data = await response.json();
 
     if (data.online) {
-      statusSpan.textContent = "Açık";
-      playersSpan.textContent = data.players.online;
-      if(data.players.online > 0 && data.players.list){
-        playerListSpan.textContent = data.players.list.join(', ');
+      serverStatusEl.textContent = "Açık";
+      playerCountEl.textContent = data.players.online || 0;
+      playerListEl.innerHTML = "";
+
+      if (data.players.list && data.players.list.length > 0) {
+        data.players.list.forEach((player) => {
+          const li = document.createElement("li");
+          li.textContent = player;
+          playerListEl.appendChild(li);
+        });
       } else {
-        playerListSpan.textContent = "Oyuncu Yok";
+        playerListEl.innerHTML = "<li>Oyuncu yok</li>";
       }
     } else {
-      statusSpan.textContent = "Kapalı";
-      playersSpan.textContent = "0";
-      playerListSpan.textContent = "Sunucu Kapalı";
+      serverStatusEl.textContent = "Kapalı";
+      playerCountEl.textContent = "0";
+      playerListEl.innerHTML = "<li>Sunucu kapalı</li>";
     }
   } catch (error) {
-    statusSpan.textContent = "Durum alınamadı";
-    playersSpan.textContent = "-";
-    playerListSpan.textContent = "-";
-    console.error("Sunucu durumu alınamadı:", error);
+    serverStatusEl.textContent = "Hata!";
+    playerCountEl.textContent = "-";
+    playerListEl.innerHTML = "<li>Sunucu bilgisi alınamadı</li>";
+    console.error(error);
   }
 }
 
-playButton.addEventListener('click', () => {
-  if(serverInfo.classList.contains('hidden')){
-    serverInfo.classList.remove('hidden');
-    fetchServerStatus();
-  } else {
-    // Bilgiler zaten görünür, yeniden çekme veya istersen yenileyebilirsin
-    fetchServerStatus();
-  }
-});
+// Sayfa yüklendiğinde durumu hemen çek
+fetchServerStatus();
+
+// 30 saniyede bir güncelle
+setInterval(fetchServerStatus, 30000);
